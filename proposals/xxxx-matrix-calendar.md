@@ -1,10 +1,15 @@
 
-# Matrix Calendar MSC
+# MSCXXXX: Matrix Calendar
 
 When taking a look at common calendar solutions
 used at home or at organizations the "Outlook" calendar comes quickly to mind.
 
-Invitations are sent to mailboxes and the RSVPs are being sent back.
+Invitations are sent to mailboxes and the responses are being sent back.
+
+However, neither the calendar itself nor the communication (e.g. responses)
+are sent via the Matrix network.
+Having Matrix as a network for handling calendar management
+would allow for easier and quicker communication regarding a meeting.
 
 *Note: The term "calendar item" is being used over the term "event"
 to avoid conflicts with the timeline events.
@@ -68,6 +73,7 @@ This does not address:
 - Room and resource management
 - Matrix-external invitations (e.g. via email)
 - Forwarding invitations, cross-room invitations
+- TODO: Query for all calendar-related events so clients can present them in a unified view
 
 Also, the term "calendar item" does not sound very nice
 and may be considered to be changed.
