@@ -1,0 +1,102 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "title": "calendar item (draft)",
+    "description": "Matrix calendar item (draft)",
+    "type": "object",
+    "properties": {
+        "title": {
+            "description": "Title of the event",
+            "type": "string"
+        },
+        "type": {
+            "description": "What is this",
+            "enum": [
+                "msc.c0ffeecode.event.item"
+            ]
+        },
+        "is_cancelled": {
+            "description": "Is the event cancelled",
+            "type": "boolean",
+            "default": false
+        },
+        "description": {
+            "description": "Description/body of the event",
+            "type": "string",
+            "$comment": "TODO: Data type"
+        },
+        "when": {
+            "description": "Timestamp when the event start and end",
+            "type": "object",
+            "$ref": "./cal-start-end-time.json"
+        },
+        "showWithoutTime": {
+            "description": "Events where the time is not important, like all-day events; maps to `showWithoutTime`",
+            "type": "boolean",
+            "default": false
+        },
+        "organizator_timezone": {
+            "description": "The timezone the organizer planned this event for",
+            "$comment": "// TODO: RFC",
+            "type": "string"
+        },
+        "proposed_reminder_minutes": {
+            "description": "Timespan of proposed/default reminder for this event",
+            "type": "number",
+            "oneOf": [
+                {
+                    "description": "Number of minutes before the beginning of the event",
+                    "type": "number"
+                },
+                {
+                    "description": "Do remind (false: do not remind, true: remind just at the beginning)",
+                    "type": "boolean"
+                }
+            ]
+        },
+        "location_physical": {
+            "description": "Physical location of an event",
+            "$comment": "MUST be `m.location` content",
+            "type": "object"
+        },
+        "virtualLocations": {
+            "description": "Virtual locations of an event",
+            "$comment": "// TODO: Matrix calls, type"
+        },
+        "icon": {
+            "$comment": "//TODO: Maps to `links` with rel `icon`"
+        },
+        "color": {
+            "description": "Optional color which clients may use to categorize the event (CSS color)",
+            "type": "string"
+        },
+        "free_busy_status": {
+            "$comment": "// TODO"
+        },
+        "recurrence": {
+            "description": "// TODO",
+            "type": "object"
+        },
+        "recurrence_exception": {
+            "description": "// TODO",
+            "type": "object"
+        },
+        "participants_required": {
+            "description": "Matrix user IDs of identities required",
+            "type": "array",
+            "items": {
+                "description": "Matrix ID",
+                "type": "string"
+            },
+            "$comment": "// TODO: role"
+        },
+        "participants_optional": {
+            "description": "All people in the room this event was sent to are invited, but explicit invitations",
+            "type": "null"
+        },
+        "expect_reply": {
+            "description": "Should client encourage the user to reply to the event",
+            "type": "boolean"
+        }
+    },
+    "required": ["title", "type"]
+}

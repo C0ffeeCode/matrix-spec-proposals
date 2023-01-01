@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "title": "calendar response (draft)",
+    "description": "Matrix calendar response (draft)",
+    "type": "object",
+    "$comment": "Relation to item handled using `m.threads` relations",
+    "properties": {
+        "status": {
+            "description": "Status of confirmation; `needs-action` means undefined / no response",
+            "type": "string",
+            "enum": [
+                "accepted",
+                "declined",
+                "tentative"
+            ]
+        },
+        "agreed_time": {
+            "description": "The time this response agrees to, must be the same as the related calendar item",
+            "$ref": "./cal-start-end-time.json"
+        },
+        "time_change_proposal": {
+            "description": "Proposed time change; SHOULD NOT be combined with an accepting status",
+            "$ref": "./cal-start-end-time.json"
+        }
+    },
+    "required": ["status", "agreed_time"]
+}

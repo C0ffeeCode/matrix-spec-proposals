@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "type": "object",
+    "properties": {
+        "when_start": {
+            "description": "Timestamp when the event starts",
+            "type": "number"
+        },
+        "when_end": {
+            "description": "Timestamp when the event ends",
+            "type": "number"
+        }
+    },
+    "required": ["when_start", "when_end"]
+}
